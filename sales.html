@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sales</title>
+</head>
+<body>
+
+    <p id="initial"></p>
+    <p id="updated"></p>
+
+    <script>
+    
+        var tshirt = 5;          
+        var cap = 3;             
+        var tshirtprice = 400;  
+        var capprice = 150;      
+
+        var total = (tshirt * tshirtprice) + (cap * capprice);
+
+        document.getElementById("initial").innerHTML =
+            "Initial Total: " + total;
+
+        tshirtprice = 450;  
+
+        
+        var updatedtotal = (tshirt * tshirtprice) + (cap * capprice);
+
+        document.getElementById("updated").innerHTML =
+            "Updated Total: " + updatedtotal;
+    </script>
+</body>
+</html>
