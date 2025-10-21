@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book Summary</title>
+</head>
+<body>
+
+    <script>
+        
+        var book = {
+            title: "The Alchemist",
+            author: "Paulo Coelho",
+            year: 1988,
+
+            getSummary: function() {
+                return "The book '" + this.title + "' was written by " + this.author + " in " + this.year + ".";
+            }
+        };
+
+        console.log("Book Object Details:");
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author);
+        console.log("Year: " + book.year);
+
+        function printBookSummary(bookObj) {
+            console.log("Book Summary:");
+            console.log(bookObj.getSummary());
+        }
+        printBookSummary(book);
+    </script>
+</body>
+</html>
