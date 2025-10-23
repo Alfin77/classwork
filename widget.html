@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Widget</title>
+</head>
+<body>
+    <script>
+
+        var randomNumber = Math.floor(Math.random() * 100) + 1;
+        console.log("Random Number(1-100): " + randomNumber);
+
+        var userScoreString = "75";
+        console.log("User Score(String): " + userScoreString);
+
+        var userScoreNumber = Number(userScoreString);
+        console.log("User Score(Number): " + userScoreNumber);
+
+        var difference = randomNumber - userScoreNumber;
+        console.log("Difference between Random Number and User Score: " + difference);
+
+        var squareRoot = Math.sqrt(userScoreNumber);
+        var roundedSquareRoot = Math.round(squareRoot);
+        console.log("Rounded Square Root of User Score: " + roundedSquareRoot);
+
+        console.log("Value of (pi): " + Math.PI);
+
+        var result = "50" * 2; 
+        console.log('Result of "50" * 2: ' + result);
+    </script>
+
+</body>
+</html>
