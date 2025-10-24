@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Item Return Check</title>
+</head>
+<body>
+  <button onclick="checkReturn()">Check Return</button>
+
+  <script>
+    var order = {
+      itemName: "Bluetooth Headphones",
+      isDelivered: true,
+      daysSinceDelivery: 6
+    };
+
+    function checkReturn() {
+      var hasItemName = "itemName" in order;
+
+      var message = (order.isDelivered && order.daysSinceDelivery <= 7) 
+      ? "Eligible for Return" : "Return Period Expired";
+
+      console.log("Item Name:", order.itemName);
+      console.log("Delivered:", order.isDelivered);
+      console.log("Days Since Delivery:", order.daysSinceDelivery);
+      console.log(message);
+      console.log("Item name property exists:", hasItemName);
+
+      delete order.daysSinceDelivery;
+      console.log("After deleting daysSinceDelivery property:", order);
+    }
+  </script>
+</body>
+</html>
