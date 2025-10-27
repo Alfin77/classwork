@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Grocery Store </title>
+</head>
+<body>
+  <script>
+
+    var productNames = ["Apple", "Banana", "Mango", "Orange", "Grapes"];
+    var productPrices = [50, 20, 70, 40, 90];
+
+    var products = productNames.map(function(name, index) {
+      return { name: name, price: productPrices[index] };
+    });
+
+    console.log(" All Products ");
+    products.map(function(item) {
+      console.log("Product: " + item.name + "  Price: " + item.price);
+    });
+
+    var expensiveProducts = products.filter(function(item) {
+      return item.price > 50;
+    });
+
+    console.log(" Products with Price greater than 50 ");
+    expensiveProducts.map(function(item) {
+      console.log("Product: " + item.name + "  Price: " + item.price);
+    });
+
+    products.push({ name: "Watermelon", price: 80 });
+
+    console.log(" Updated Product List ");
+    products.map(function(item) {
+      console.log("Product: " + item.name + "  Price: " + item.price);
+    });
+  </script>
+</body>
+</html>
