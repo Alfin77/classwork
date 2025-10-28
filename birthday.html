@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Birthday Tracker</title>
+</head>
+<body>
+
+  <script>
+    var friend = {
+      name: "Michael",
+      birthDate: "2002-10-28" 
+    };
+
+    function getBirthdayDetails(friend) {
+      console.log(" FRIEND DETAILS ");
+      console.log("Name:", friend.name);
+      console.log("Birth Date (String):", friend.birthDate);
+
+      var birth = new Date(friend.birthDate);
+      console.log(" DATE OBJECT ");
+      console.log("Converted to Date object:", birth);
+
+      var day = birth.getDate();
+      var monthNames = [ "January","February","March","April","May","June",
+        "July","August","September","October","November","December" ];
+      var month = monthNames[birth.getMonth()];
+      var year = birth.getFullYear();
+
+      console.log(" BIRTH DETAILS ");
+      console.log("Year:", year);
+      console.log("Month:", month);
+      console.log("Day:", day);
+
+      var today = new Date();
+      var age = today.getFullYear() - birth.getFullYear();
+
+      console.log(" AGE CALCULATION ");
+      console.log("Current Year:", today.getFullYear());
+      console.log("Birth Year:", year);
+      console.log("Calculated Age:", age, "years old");
+
+      var result = friend.name + " was born on " + day + " " + month + ", " + year + " and is " + age + " years old.";
+      console.log(" FINAL RESULT ");
+      console.log(result);
+    }
+
+    getBirthdayDetails(friend);
+  </script>
+</body>
+</html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Online Grocery Store </title>
+  <title>Online Grocery Store</title>
 </head>
 <body>
-  <script>
 
+  <script>
     var productNames = ["Apple", "Banana", "Mango", "Orange", "Grapes"];
     var productPrices = [50, 20, 70, 40, 90];
 
@@ -14,25 +14,25 @@
     });
 
     console.log(" All Products ");
-    products.map(function(item) {
-      console.log("Product: " + item.name + "  Price: " + item.price);
-    });
+    for (var i = 0; i < products.length; i++) {
+      console.log("Product: " + products[i].name + " - Price: " + products[i].price);
+    }
 
     var expensiveProducts = products.filter(function(item) {
       return item.price > 50;
     });
 
     console.log(" Products with Price greater than 50 ");
-    expensiveProducts.map(function(item) {
-      console.log("Product: " + item.name + "  Price: " + item.price);
-    });
+    for (var i = 0; i < expensiveProducts.length; i++) {
+      console.log("Product: " + expensiveProducts[i].name + " - Price: " + expensiveProducts[i].price);
+    }
 
     products.push({ name: "Watermelon", price: 80 });
 
     console.log(" Updated Product List ");
-    products.map(function(item) {
-      console.log("Product: " + item.name + "  Price: " + item.price);
-    });
+    for (var i = 0; i < products.length; i++) {
+      console.log("Product: " + products[i].name + " - Price: " + products[i].price);
+    }
   </script>
 </body>
 </html>
