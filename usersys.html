@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Comment System</title>
+</head>
+<body>
+  <script>
+    var comment = prompt("Enter your comment:");
+    var number = /[0-9]/.test(comment);
+    var updatedComment = comment.replace(/[0-9]+/g, "NUMBER");
+
+    console.log("Entered comment:", comment);
+    console.log("Number found:", number);
+    console.log("Updated comment:", updatedComment);
+  </script>
+</body>
+</html>
