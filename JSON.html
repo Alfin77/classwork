@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON Message Format</title>
+</head>
+<body>
+  <script>
+    var jsonText = '{"name": "kevin", "email": "kevin@example.com", "message": "Hello there!"}';
+
+    var showMessage = () => {
+      try {
+
+        let userData = JSON.parse(jsonText);  
+
+        console.log("Message received from " + userData.name);
+        console.log("Email:", userData.email);
+        console.log("Message:", userData.message);
+      } 
+      catch (error) {
+        console.log(" Error: Invalid JSON data!");
+      }
+    };
+
+    showMessage();
+  </script>
+</body>
+</html>
