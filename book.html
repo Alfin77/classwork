@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Information System</title>
+</head>
+<body>
+  <script>
+    class Book {
+      constructor(title, author, price) {
+        this.title = title;
+        this.author = author;
+        this.price = price;
+      }
+
+      get getTitle() {
+        return this.title;
+      }
+
+      get getAuthor() {
+        return this.author;
+      }
+
+      set setPrice(newPrice) {
+        if (typeof newPrice !== "number") {
+          console.log(" Invalid price!");
+        } else {
+          if (newPrice <= 0) {
+            console.log(" Invalid price!");
+          } else {
+            this.price = newPrice;
+            console.log(" Price updated successfully to:", newPrice);
+          }
+        }
+      }
+
+      showDetails() {
+        console.log(" Book Title:", this.title);
+        console.log(" Author:", this.author);
+        console.log(" Price:", this.price);
+      }
+    }
+
+    var myBook = new Book("One Piece", "Eiichiro Oda", 500);
+
+    console.log("Initial Book Details:");
+    myBook.showDetails();
+
+    console.log(" ('ABC')");
+    myBook.setPrice = "ABC";
+
+    console.log(" (-100)");
+    myBook.setPrice = -100;
+
+    console.log(" (750)");
+    myBook.setPrice = 750;
+
+    console.log("Final Book Details:");
+    myBook.showDetails();
+  </script>
+</body>
+</html>
