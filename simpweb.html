@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Color Change Example</title>
+</head>
+<body>
+
+  <form id="myForm">
+    <input type="text" id="textBox">
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="Paragraph"></p>
+
+  <script>
+    var form = document.getElementById("myForm");
+    var textBox = document.getElementById("textBox");
+    var paragraph = document.getElementById("Paragraph");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); 
+
+      var userText = textBox.value;
+
+      paragraph.textContent = userText;
+      paragraph.style.color = "blue";
+    });
+
+    paragraph.addEventListener("mouseover", function() {
+      paragraph.style.color = "green";
+    });
+
+    paragraph.addEventListener("mouseout", function() {
+      paragraph.style.color = "blue";
+    });
+  </script>
+</body>
+</html>
