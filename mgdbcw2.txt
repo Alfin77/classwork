@@ -1,0 +1,42 @@
+// Create and switch to new database
+use EventTracker
+
+// Create collection and insert ONE event document
+db.UpcomingEvents.insertOne({name: "Music Fest", date: new Date(),            
+ isFreeEntry: false,
+    ticketPrice: 299.99,
+    performers: ["DJ Max", "Live Band"],
+    location: {
+        city: "Chennai",
+        venue: "Beach Arena"
+    },
+    specialCode: null
+})
+
+// Insert TWO MORE events using insertMany()
+db.UpcomingEvents.insertMany([
+    {
+        name: "Food Carnival",
+        date: new Date(),
+        isFreeEntry: true,
+        ticketPrice: 0,
+        performers: ["Chef Anita", "Dance Crew"],
+        location: { city: "Mumbai", venue: "Central Park" },
+        specialCode: "FOOD2025"
+    },
+    {
+        name: "Tech Expo",
+        date: new Date(),
+        isFreeEntry: false,
+        ticketPrice: 499.50,
+        performers: ["AI Speaker", "Robotics Team"],
+        location: { city: "Bangalore", venue: "Tech Hall" },
+        specialCode: null
+    }
+])
+
+// Show collections
+show collections
+
+// Display all event documents
+db.UpcomingEvents.find()
