@@ -1,0 +1,47 @@
+//  Create & switch to database
+use ElectronicsStore
+
+// Insert Sample Products
+db.Products.insertMany([
+    { productName: "Galaxy S21", category: "Smartphones", price: 799.99, stock: 10, discountAvailable: true },
+    { productName: "iPhone 13", category: "Smartphones", price: 999.99, stock: 8, discountAvailable: false },
+    { productName: "Dell XPS 13", category: "Laptops", price: 1299.99, stock: 6, discountAvailable: true },
+    { productName: "HP Spectre x360", category: "Laptops", price: 1499.99, stock: 3, discountAvailable: false },
+    { productName: "Sony Headphones", category: "Accessories", price: 199.99, stock: 15, discountAvailable: true },
+    { productName: "Logitech Mouse", category: "Accessories", price: 49.99, stock: 20, discountAvailable: true },
+    { productName: "MacBook Air", category: "Laptops", price: 999.99, stock: 7, discountAvailable: true },
+    { productName: "Samsung Tablet", category: "Tablets", price: 299.99, stock: 12, discountAvailable: false },
+    { productName: "Smart Watch", category: "Wearables", price: 249.99, stock: 5, discountAvailable: true },
+    { productName: "Gaming Monitor", category: "Monitors", price: 399.99, stock: 4, discountAvailable: false }
+]);
+
+
+
+
+// Find all products with a price less than 1000
+db.Products.find({ price: { $lt: 1000 } });
+
+
+ //Find one product whose category is "Smartphones"
+db.Products.findOne({ category: "Smartphones" });
+
+
+// Find all Laptop products with stock >= 5
+db.Products.find({
+    category: "Laptops",
+    stock: { $gte: 5 }
+});
+
+// Find products where price < 300 OR discountAvailable = true
+db.Products.find({
+    $or: [
+        { price: { $lt: 300 } },
+        { discountAvailable: true }
+    ]
+});
+
+
+ //Find products whose price is NOT equal to 1500
+db.Products.find({
+    price: { $ne: 1500 }
+});
