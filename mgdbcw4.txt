@@ -1,0 +1,54 @@
+// Use or create the database
+use ClothingStoreDB
+
+// Insert sample clothes
+db.Clothes.insertMany([
+    { name: "Denim Jeans", category: "Pants", price: 599.99, stock: 20, discount: true },
+    { name: "Cotton T-Shirt", category: "Shirt", price: 199.99, stock: 15, discount: false },
+    { name: "Leather Jacket", category: "Jacket", price: 999.99, stock: 5, discount: true },
+    { name: "Formal Shirt", category: "Shirt", price: 349.99, stock: 12, discount: true },
+    { name: "Cargo Pants", category: "Pants", price: 499.99, stock: 8, discount: false },
+    { name: "Wool Sweater", category: "Sweater", price: 699.99, stock: 10, discount: true },
+    { name: "Casual Shorts", category: "Shorts", price: 249.99, stock: 25, discount: true },
+    { name: "Silk Scarf", category: "Accessories", price: 149.99, stock: 0, discount: false },
+    { name: "Hooded Sweatshirt", category: "Sweater", price: 399.99, stock: 18, discount: true },
+    { name: "Chinos", category: "Pants", price: 299.99, stock: 11, discount: false }
+])
+
+// Find items price > 500
+db.Clothes.find({ price: { $gt: 500 } })
+
+// Find one shirt
+db.Clothes.findOne({ category: "Shirt" })
+
+// Find price <= 300 and stock > 10
+db.Clothes.find({ price: { $lte: 300 }, stock: { $gt: 10 } }).pretty()
+
+// Find price < 200 OR discount = true
+db.Clothes.find({
+  $or: [
+    { price: { $lt: 200 } },
+    { discount: true }
+  ]
+})
+
+// Update stock of Denim Jeans to 50
+db.Clothes.update(
+  { name: "Denim Jeans" }, 
+  { $set: { stock: 50 } }
+)
+
+// Update Leather Jacket price to 1200
+db.Clothes.update(
+  { name: "Leather Jacket" },
+  { $set: { price: 1200 } }
+)
+
+// Check updated Leather Jacket
+db.Clothes.findOne({ name: "Leather Jacket" })
+
+// Remove one item where stock = 0
+db.Clothes.remove(
+  { stock: 0 },
+  { justOne: true }
+)
