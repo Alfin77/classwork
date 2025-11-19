@@ -1,0 +1,26 @@
+//switched to db employeeCompany
+use employeeCompany
+
+//insert employees
+db.employees.insertMany([
+    { name: "Alice Johnson", department: "Engineering", salary: 75000, email: "alice.johnson@company.com" },
+    { name: "Bob Smith", department: "Marketing", salary: 65000, email: "bob.smith@company.com" },
+    { name: "Charlie Brown", department: "Engineering", salary: 80000, email: "charlie.brown@company.com" },
+    { name: "Diana Lee", department: "HR", salary: 60000, email: "diana.lee@company.com" },
+    { name: "Emma Davis", department: "Sales", salary: 70000, email: "emma.davis@company.com" },
+    { name: "Frank Wilson", department: "Engineering", salary: 82000, email: "frank.wilson@company.com" },
+    { name: "Grace Kim", department: "Marketing", salary: 68000, email: "grace.kim@company.com" },
+    { name: "Henry Chen", department: "HR", salary: 62000, email: "henry.chen@company.com" }
+])
+
+// To show only the name and department of all employees, hiding the _id field.
+db.employees.find({},{"_id":0,"name":1,"department":1})
+
+// To departmentisplay the first 4 employees with all their details.
+db.employees.find().limit(4)
+
+// To Skip the first 2 employees and show the next 3 employees with only their name and salary.
+db.employees.find({},{"name":1},{"salary":1}).limit(3).skip(2)
+
+// To Skip the first 5 employees and show the next 2 employees with just the name and email.
+db.employees.find({},{"name":1},{"email":1}).limit(5).skip(3)
