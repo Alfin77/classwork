@@ -1,0 +1,28 @@
+// Use the database
+use clothStore
+
+// Insert sample data
+db.products.insertMany([
+    { name: "Wireless Mouse", category: "Accessories", price: 29.99, rating: 4.2 },
+    { name: "Gaming Laptop", category: "Laptops", price: 1499.99, rating: 4.8 },
+    { name: "Smartphone Pro", category: "Smartphones", price: 999.99, rating: 4.5 },
+    { name: "Bluetooth Headphones", category: "Accessories", price: 89.99, rating: 4.3 },
+    { name: "4K Monitor", category: "Monitors", price: 399.99, rating: 4.6 },
+    { name: "Tablet X", category: "Tablets", price: 299.99, rating: 4.1 },
+    { name: "Smart Watch", category: "Wearables", price: 199.99, rating: 4.4 },
+    { name: "Desktop PC", category: "Desktops", price: 1299.99, rating: 4.7 },
+    { name: "Wireless Keyboard", category: "Accessories", price: 49.99, rating: 4.0 },
+    { name: "UltraBook", category: "Laptops", price: 1099.99, rating: 4.9 }
+])
+
+// Show only name and price
+db.products.find({}, { name: 1, price: 1, _id: 0 })
+
+// Show top 3 most expensive products
+db.products.find({}, { name: 1, price: 1, category: 1, _id: 0 }).sort({ price: -1 }).limit(3)
+
+// Skip first 5 by rating (high to low), show next 4 with name and rating
+db.products.find({}, { name: 1, rating: 1, _id: 0 }).sort({ rating: -1 }).skip(5).limit(4)
+
+// List distinct categories
+db.products.distinct("category")
