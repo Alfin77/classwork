@@ -1,0 +1,81 @@
+// Use the database
+use OnlinestoreDB
+
+// Insert data
+db.orders.insertMany([
+    { 
+        orderId: "ORD001", 
+        customer: "Alice Johnson", 
+        items: [
+            { product: "Wireless Mouse", price: 29.99, quantity: 2 },
+            { product: "Bluetooth Headphones", price: 89.99, quantity: 1 }
+        ], 
+        orderDate: ISODate("2025-07-01T10:00:00Z"), 
+        status: "Delivered"
+    },
+    { 
+        orderId: "ORD002", 
+        customer: "Bob Smith", 
+        items: [
+            { product: "Wireless Mouse", price: 29.99, quantity: 3 },
+            { product: "Smart Watch", price: 199.99, quantity: 1 }
+        ], 
+        orderDate: ISODate("2025-07-02T12:30:00Z"), 
+        status: "Pending"
+    },
+    { 
+        orderId: "ORD003", 
+        customer: "Charlie Brown", 
+        items: [
+            { product: "Bluetooth Headphones", price: 89.99, quantity: 2 },
+            { product: "Tablet X", price: 299.99, quantity: 1 }
+        ], 
+        orderDate: ISODate("2025-07-03T15:45:00Z"), 
+        status: "Delivered"
+    },
+    { 
+        orderId: "ORD004", 
+        customer: "Diana Lee", 
+        items: [
+            { product: "Wireless Mouse", price: 29.99, quantity: 1 },
+            { product: "Smart Watch", price: 199.99, quantity: 2 }
+        ], 
+        orderDate: ISODate("2025-07-04T09:15:00Z"), 
+        status: "Shipped"
+    },
+    { 
+        orderId: "ORD005", 
+        customer: "Emma Davis", 
+        items: [
+            { product: "Tablet X", price: 299.99, quantity: 2 },
+            { product: "Bluetooth Headphones", price: 89.99, quantity: 3 }
+        ], 
+        orderDate: ISODate("2025-07-05T11:20:00Z"), 
+        status: "Delivered"
+    }
+])
+
+// Break items into separate entries
+db.orders.aggregate([
+    { $unwind: "$items" },
+
+    // Group by product and total quantity
+    { 
+        $group: { 
+            _id: "$items.product",
+            totalQuantity: { $sum: "$items.quantity" }
+        }
+    },
+
+    // Sort by quantity (high to low)
+    { $sort: { totalQuantity: -1 } },
+
+    // Show product name and quantity only
+    { 
+        $project: { 
+            _id: 0,
+            product: "$_id",
+            totalQuantity: 1
+        }
+    }
+])
