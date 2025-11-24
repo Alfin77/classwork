@@ -1,0 +1,27 @@
+// Create the database
+use BlogDB
+
+
+//Insert some sample posts
+db.posts.insertMany([
+    { title: "MongoDB Basics", author: "Alice", tags: ["database","mongodb"], publishedDate: ISODate("2025-01-10") },
+    { title: "Node.js Guide", author: "Bob", tags: ["node","backend"], publishedDate: ISODate("2025-02-05") },
+    { title: "Advanced MongoDB", author: "Alice", tags: ["database","nosql"], publishedDate: ISODate("2025-03-15") },
+    { title: "Full Stack Tips", author: "Charlie", tags: ["fullstack","web"], publishedDate: ISODate("2025-04-01") }
+])
+
+
+// Create index on author
+db.posts.createIndex({ author: 1 })
+
+
+// Create index on publishedDate
+db.posts.createIndex({ publishedDate: -1 })
+
+
+// Show all indexes in the posts collection
+db.posts.getIndexes()
+
+
+// Remove the index on author
+db.posts.dropIndex("author_1")
