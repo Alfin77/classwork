@@ -1,0 +1,20 @@
+// Use the database
+use mashupdb
+
+// Create an index on mark (ascending)
+db.students.createIndex({ mark: 1 })
+
+// Check all indexes in the students collection
+db.students.getIndexes()
+
+// Remove the index on mark
+db.students.dropIndex({ mark: 1 })
+
+//Export the first 3 student records sorted by _id into a JSON file 
+db.getCollection('students')
+
+  .find({})
+
+  .sort({ _id: 1 })
+
+  .limit(3);
