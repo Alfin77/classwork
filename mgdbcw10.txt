@@ -1,0 +1,46 @@
+// Create database
+use blogDB
+
+
+// Add some example posts
+db.posts.insertMany([
+  {
+    title: "Introduction to MongoDB",
+    content: "MongoDB is a NoSQL database used for modern apps.",
+    author: "Alice"
+  },
+  {
+    title: "Learning Node.js",
+    content: "Node.js works well with MongoDB.",
+    author: "Bob"
+  },
+  {
+    title: "Web Development Tips",
+    content: "Simple tips to improve your web development skills.",
+    author: "Charlie"
+  }
+])
+
+
+// Make a text index on title and content
+db.posts.createIndex({
+  title: "text",
+  content: "text"
+})
+
+
+// Find posts that contain the word “mongodb”
+db.posts.find({
+  $text: { $search: "mongodb" }
+})
+
+
+// Show all indexes in the posts collection
+db.posts.getIndexes()
+
+
+// Delete the text index
+db.posts.dropIndex({
+  title: "text",
+  content: "text"
+})
